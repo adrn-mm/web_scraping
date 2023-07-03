@@ -14,7 +14,10 @@ options.add_argument("--headless=new")
 driver = webdriver.Chrome(options=options)
 
 # Loop through pages 1 to 10
-for page in range(1, 11):
+for page in range(1, 4):
+    # print status
+    print("Please wait, scraping page {}".format(page))
+
     # Construct the page URL
     url = f"https://www.tokopedia.com/search?navsource=&ob=5&page={page}&q=laptop&srp_component_id=04.06.00.00&srp_page_id=&srp_page_title=&st="
 
@@ -63,10 +66,12 @@ for page in range(1, 11):
         })
 
 driver.quit()
+print("Scraping process is done.")
+
 
 # Create a DataFrame from the collected data
 df = pd.DataFrame(data)
 
 # Create a CSV file
-filepath = "web_scraping/scraped_tokopedia_data.csv"
+filepath = r'D:\Personal Projects\web_scraping\scraped_tokopedia_data.csv'
 df.to_csv(filepath, index=False)
