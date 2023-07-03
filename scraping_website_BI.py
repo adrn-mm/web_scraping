@@ -1,7 +1,5 @@
 """
-
-//*[@id="ctl00_PlaceHolderMain_g_6c89d4ad_107f_437d_bd54_8fda17b556bf_ctl00_GridView1"]/table
-
+This script still on development
 
 """
 
