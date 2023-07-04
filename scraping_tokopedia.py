@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 import time
 from selenium.common.exceptions import NoSuchElementException
+import os
 
 # Create an empty list to store the data
 data = []
@@ -73,5 +74,4 @@ print("Scraping process is done.")
 df = pd.DataFrame(data)
 
 # Create a CSV file
-filepath = r'D:\Personal Projects\web_scraping\scraped_tokopedia_data.csv'
-df.to_csv(filepath, index=False)
+df.to_csv(os.getcwd() + '\scraped_tokopedia_data.csv', index=False)
