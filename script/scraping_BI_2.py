@@ -7,7 +7,7 @@ import os
 from selenium.common.exceptions import TimeoutException
 
 # define the url
-url= "https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx"
+url= "https://www.bi.go.id/id/statistik/informasi-kurs/jisdor/Default.aspx"
 
 # Configure selenium
 options = webdriver.ChromeOptions()
@@ -28,27 +28,21 @@ except TimeoutException:
 time.sleep(5)
 
 # get the table
-table = driver.find_elements(By.CLASS_NAME, 'text-right')
+table = driver.find_elements(By.CLASS_NAME, 'text-center')
 
 # print status again
 print("Scraping finished!")
 
 # get the text from the table
-lst_elements = []
+texts = []
 for element in table:
-    lst_elements.append(element.text)
-
-# remove empty elements
-lst_elements = list(filter(bool, lst_elements))
+    texts.append(element.text)
 
 # create df
-header = lst_elements[:4]
-rows = lst_elements[6:]
-data = [lst_elements[i:i+4] for i in range(5, len(lst_elements), 4)]
+header = texts[:2]
+data = [texts[i:i+2] for i in range(2, len(texts), 2)]
 df = pd.DataFrame(data, columns=header)
 
-# remove last row from df
-df = df.drop(df.index[-1])
-
 # save df to csv
-df.to_csv(os.getcwd() + '\scraped_BI_3.csv', index=False)
+# save df to csv
+df.to_csv(os.getcwd() + '\data\scraped_BI_2.csv', index=False)

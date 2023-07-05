@@ -7,7 +7,7 @@ import os
 from selenium.common.exceptions import TimeoutException
 
 # define the url
-url= "https://www.bi.go.id/id/statistik/indikator/bi-7day-rr.aspx"
+url= "https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx"
 
 # Configure selenium
 options = webdriver.ChromeOptions()
@@ -43,12 +43,8 @@ lst_elements = list(filter(bool, lst_elements))
 
 # create df
 header = lst_elements[:4]
-rows = lst_elements[6:]
 data = [lst_elements[i:i+4] for i in range(5, len(lst_elements), 4)]
 df = pd.DataFrame(data, columns=header)
 
-# remove last row from df
-df = df.drop(df.index[-1])
-
 # save df to csv
-df.to_csv(os.getcwd() + '\scraped_BI_3.csv', index=False)
+df.to_csv(os.getcwd() + '\data\scraped_BI_3.csv', index=False)

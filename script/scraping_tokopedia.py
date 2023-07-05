@@ -74,4 +74,4 @@ print("Scraping process is done.")
 df = pd.DataFrame(data)
 
 # Create a CSV file
-df.to_csv(os.getcwd() + '\scraped_tokopedia_data.csv', index=False)
+df.to_csv(os.getcwd() + '\data\scraped_tokopedia_data.csv', index=False)
