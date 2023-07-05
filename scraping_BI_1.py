@@ -7,7 +7,7 @@ import os
 from selenium.common.exceptions import TimeoutException
 
 # define the url
-url= "https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx"
+url= "https://www.bi.go.id/id/statistik/indikator/bi-7day-rr.aspx"
 
 # Configure selenium
 options = webdriver.ChromeOptions()
